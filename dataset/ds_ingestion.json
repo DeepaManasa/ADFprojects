@@ -1,0 +1,31 @@
+{
+	"name": "ds_ingestion",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_ingestion",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"srcfile": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().srcfile",
+					"type": "Expression"
+				},
+				"fileSystem": "on-premises"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
